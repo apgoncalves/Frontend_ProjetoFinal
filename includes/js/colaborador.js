@@ -11,7 +11,14 @@ function carregaInfoColab() {
 
     lista = objUser.listaOcorrencias;
     for (i=0; i<lista.length; i++) {
+        
         var oc = lista[i];
+        if(oc.status == 0) {
+            stat = "PENDENTE";
+        }
+        else {
+            stat = "JUSTIFICADO";
+        }
 
         relatorio = relatorio + 
                     `
@@ -19,7 +26,7 @@ function carregaInfoColab() {
                        <div class="col-4"><a href="justificativa_he.html?numSeq=${oc.numSeq}">${oc.dataOc}</a></div>
                        <div class="col-3">${oc.numHoras}</div>
                        <div class="col-4">${oc.atividade.nomeAtividade}</div>
-                       <div class="col-1">${oc.status}</div>
+                       <div class="col-1">${stat}</div>
                     </div>      
                     `;
     }

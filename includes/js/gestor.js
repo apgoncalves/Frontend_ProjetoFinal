@@ -35,17 +35,30 @@ function preencheLista(lista){
 
     for (i=0; i<lista.length; i++) {
         var oc = lista[i];
+        if(oc.status == 0) {
+            stat = "PENDENTE";
+        }
+        else {
+            stat = "JUSTIFICADO";
+        }
+        if(oc.pontoManual == 0) {
+            ponto = "NAO";
+        }
+        else {
+            ponto = "SIM";
+        }
+
         relatorio = relatorio + 
                     `
                     <div class="row"> 
                        <div class="col-1">${oc.colaborador.racf}</div>
-                       <div class="col-2">${oc.colaborador.nomeUsuario}</div>
-                       <div class="col-1">${oc.dataOc}</div>
+                       <div class="col-1">${oc.colaborador.nomeUsuario}</div>
+                       <div class="col-2" style="text-align: center;">${oc.dataOc}</div>
                        <div class="col-1">${oc.numHoras}</div>
                        <div class="col-2">${oc.atividade.nomeAtividade}</div>
                        <div class="col-3">${oc.descricao}</div>
-                       <div class="col-1">${oc.pontoManual}</div>
-                       <div class="col-1">${oc.status}</div>
+                       <div class="col-1">${ponto}</div>
+                       <div class="col-1">${stat}</div>
                     </div>      
                     `;
 
